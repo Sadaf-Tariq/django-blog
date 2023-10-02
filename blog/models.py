@@ -20,7 +20,6 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
 
-
     class Meta:
         ordering = ['-created_on']
 
@@ -35,7 +34,7 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments'
     )
-    name = models.CharField(max_length=8)
+    name = models.CharField(max_length=50)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
