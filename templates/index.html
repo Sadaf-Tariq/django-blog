@@ -8,7 +8,7 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-            {% for post in post_list %}
+            {% for post in posts %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -28,8 +28,15 @@
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
+                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="fa fa-heart"></i>
                                 {{ post.number_of_likes }}</p>
+                            <h5 class="card-title">Avg rating:
+                                <span class="fa fa-star {% if post.average_rating > 0 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if post.average_rating > 1 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if post.average_rating > 2 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if post.average_rating > 3 %} checked {% endif %}" ></span>
+                                <span class="fa fa-star {% if post.average_rating > 4 %} checked {% endif %}"></span>
+                            </h5>
                         </div>
                     </div>
                 </div>
