@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #     template_name = "index.html"
 #     paginate_by = 6
 
-class PostList(LoginRequiredMixin, generic.ListView):
+class PostList( generic.ListView):
     paginate_by = 6
     model = Post
 
