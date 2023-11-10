@@ -71,10 +71,10 @@
                         {% if user.is_authenticated %}
                         <h3>Rate the post:</h3>
                         <p>Posting as: {{ user.username }}</p>
-                        <form method="post" style="margin-top: 1.3em;" onsubmit="submitForm()">
-                            {{ aform | crispy }}
+                        <form  method="post" style="margin-top: 1.3em;" >
+                            {{ rating_form | crispy }}
                             {% csrf_token %}
-                            <input type="submit" name="{{aform.prefix}}" value="Submit"  />
+                            <input type="submit"  value="Submit"  />
                         </form>
                         {% endif %}
                 
@@ -113,7 +113,7 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- For later -->
-                {% if commented %}
+                {% if commented  %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
@@ -122,10 +122,10 @@
 
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ bform | crispy }}
+                <form  method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <input type="submit" name="{{bform.prefix}}" value="Submit" />
+                    <input type="submit"  value="Submit" />
                 </form>
                 {% endif %}
                 {% endif %}
