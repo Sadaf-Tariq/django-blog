@@ -87,8 +87,10 @@ class PostDetail(View):
         # canAdd= True
         reviewCheck = Rating.objects.filter(user=request.user, post=post).count()
         if request.user.is_authenticated:
-            if reviewCheck+1 > 0:
-                self.canAdd= False
+            if reviewCheck > 0:
+                Rating.objects.filter(post=post, user=request.user).first().delete() 
+                # self.canAdd= False
+      
 
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
@@ -97,6 +99,9 @@ class PostDetail(View):
 
         aform = _get_form(request, RatingForm, 'aform_pre')
         bform = _get_form(request, CommentForm, 'bform_pre')
+
+        # if request.user.is_authenticated:
+        #     Rating.objects.filter(post=post, user=request.user).first().delete()   
 
         if aform.is_bound and aform.is_valid():
             aform.instance.email = request.user.email
@@ -130,6 +135,8 @@ class PostDetail(View):
         #     comment.save()
         # else:
         #     comment_form = CommentForm()
+
+        
 
         return render(
             request,

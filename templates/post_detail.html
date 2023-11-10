@@ -69,7 +69,6 @@
                     <div class="cole-1">
                         
                         {% if user.is_authenticated %}
-                        {% if canAdd %}
                         <h3>Rate the post:</h3>
                         <p>Posting as: {{ user.username }}</p>
                         <form method="post" style="margin-top: 1.3em;">
@@ -77,7 +76,6 @@
                             {% csrf_token %}
                             <input type="submit" name="{{aform.prefix}}" value="Submit" />
                         </form>
-                        {% endif %}
                         {% endif %}
                 
                     </div>
