@@ -73,9 +73,9 @@
                         <h3>Rate the post:</h3>
                         <p>Posting as: {{ user.username }}</p>
                         <form method="post" style="margin-top: 1.3em;">
-                            {{ rating_form | crispy }}
+                            {{ aform | crispy }}
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                            <input type="submit" name="{{aform.prefix}}" value="Submit" />
                         </form>
                         {% endif %}
                         {% endif %}
@@ -125,9 +125,9 @@
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
+                    {{ bform | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <input type="submit" name="{{bform.prefix}}" value="Submit" />
                 </form>
                 {% endif %}
                 {% endif %}
