@@ -85,10 +85,10 @@ class PostDetail(View):
         comments = post.comments.filter(approved=True).order_by("-created_on") 
 
         # canAdd= True
-        reviewCheck = Rating.objects.filter(user=request.user, post=post).count()
-        if request.user.is_authenticated:
-            if reviewCheck > 0:
-                Rating.objects.filter(post=post, user=request.user).first().delete() 
+        # reviewCheck = Rating.objects.filter(user=request.user, post=post).count()
+        # if request.user.is_authenticated:
+        #     if reviewCheck > 0:
+        #         Rating.objects.filter(post=post, user=request.user).first().delete() 
                 # self.canAdd= False
       
 
@@ -106,6 +106,10 @@ class PostDetail(View):
         if aform.is_bound and aform.is_valid():
             aform.instance.email = request.user.email
             aform.instance.user = request.user
+            reviewCheck = Rating.objects.filter(user=request.user, post=post).count()
+            if request.user.is_authenticated:
+                if reviewCheck > 0:
+                    Rating.objects.filter(post=post, user=request.user).first().delete() 
             rating = aform.save(commit=False)
             rating.post = post
             rating.save()

@@ -92,7 +92,20 @@
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 2500);
+
+        function submitForm(){
+
+            if(validationfails){
+
+                return false;
+            }
+            else  {
+                document.form.submit();
+                return true;
+            }
+            };
     </script>
+    
 </body>
 
 </html>

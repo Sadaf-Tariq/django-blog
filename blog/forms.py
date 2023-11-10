@@ -13,6 +13,7 @@ class RatingForm(forms.ModelForm):
         model = Rating
         fields = ('rating',)
         CHOICE = (
+            ('0',0),
             ('1', 1),
             ('2', 2),
             ('3', 3),
